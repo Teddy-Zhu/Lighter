@@ -10,8 +10,7 @@
 		<result column="userid" property="userid" jdbcType="INTEGER" />
 		<result column="hot" property="hot" jdbcType="INTEGER" />
 		<result column="review" property="review" jdbcType="INTEGER" />
-		<result column="articlestatus" property="articlestatus"
-			jdbcType="INTEGER" />
+		<result column="articlestatus" property="articlestatus" jdbcType="INTEGER" />
 		<result column="classifyid" property="classifyid" jdbcType="INTEGER" />
 	</resultMap>
 	<sql id="Base_Column_List">
@@ -20,8 +19,7 @@
 		articlestatus,
 		classifyid
 	</sql>
-	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
-		parameterType="java.lang.Integer">
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
 		from lighter_article
@@ -42,7 +40,8 @@
 		values (#{articleid,jdbcType=INTEGER},
 		#{title,jdbcType=VARCHAR},
 		#{textarea,jdbcType=VARCHAR},
-		#{pubdate,jdbcType=TIMESTAMP}, #{lastedit,jdbcType=TIMESTAMP},
+		#{pubdate,jdbcType=TIMESTAMP},
+		#{lastedit,jdbcType=TIMESTAMP},
 		#{userid,jdbcType=INTEGER},
 		#{hot,jdbcType=INTEGER},
 		#{review,jdbcType=INTEGER},
@@ -170,8 +169,7 @@
 		#{articleid,jdbcType=INTEGER}
 	</update>
 
-	<select id="selectmember" resultType="troevil.model.Members"
-		parameterType="java.lang.Integer">
+	<select id="selectmember" resultType="troevil.model.Members" parameterType="java.lang.Integer">
 		select
 		lighter_members.userid, lighter_members.nick,
 		lighter_members.email, lighter_members.password,
@@ -186,8 +184,7 @@
 		where
 		lighter_members.userid = #{userid,jdbcType=INTEGER}
 	</select>
-	<select id="selectclassifystatus" resultType="troevil.model.ClassifyStatus"
-		parameterType="java.lang.Integer">
+	<select id="selectclassifystatus" resultType="troevil.model.ClassifyStatus" parameterType="java.lang.Integer">
 		select
 		lighter_classify.classifyid,
 		lighter_classify.name, lighter_classify.preclassifyid
@@ -196,12 +193,9 @@
 		where lighter_classify.classifyid =
 		#{classifyid,jdbcType=INTEGER}
 	</select>
-	<resultMap id="articleResultMap" type="troevil.model.Article"
-		extends="BaseResultMap">
-		<collection property="member" column="userid"
-			javaType="troevil.model.Members" select="selectmember" />
-		<collection property="classifystatus" column="classifyid"
-			javaType="troevil.model.ClassifyStatus" select="selectclassifystatus" />
+	<resultMap id="articleResultMap" type="troevil.model.Article" extends="BaseResultMap">
+		<collection property="member" column="userid" javaType="troevil.model.Members" select="selectmember" />
+		<collection property="classifystatus" column="classifyid" javaType="troevil.model.ClassifyStatus" select="selectclassifystatus" />
 	</resultMap>
 
 	<select id="getAllArticle" resultMap="articleResultMap">
@@ -221,8 +215,7 @@
 		#{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
 	</select>
 
-	<select id="getnumber" parameterType="java.lang.String"
-		resultType="java.lang.Integer">
+	<select id="getnumber" parameterType="java.lang.String" resultType="java.lang.Integer">
 		select
 		count(articleid)
 		from lighter_article
