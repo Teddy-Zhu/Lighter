@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="troevil.dao.ArticleMapper">
+	<resultMap id="BaseResultMap" type="troevil.model.Article">
+		<id column="articleid" property="articleid" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="textarea" property="textarea" jdbcType="VARCHAR" />
+		<result column="pubdate" property="pubdate" jdbcType="TIMESTAMP" />
+		<result column="lastedit" property="lastedit" jdbcType="TIMESTAMP" />
+		<result column="userid" property="userid" jdbcType="INTEGER" />
+		<result column="hot" property="hot" jdbcType="INTEGER" />
+		<result column="review" property="review" jdbcType="INTEGER" />
+		<result column="articlestatus" property="articlestatus"
+			jdbcType="INTEGER" />
+		<result column="classifyid" property="classifyid" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		articleid, title, textarea, pubdate, lastedit, userid, hot,
+		review,
+		articlestatus,
+		classifyid
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from lighter_article
+		where articleid = #{articleid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		lighter_article
+		where articleid = #{articleid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="troevil.model.Article">
+		insert into lighter_article
+		(articleid, title, textarea,
+		pubdate, lastedit, userid,
+		hot, review,
+		articlestatus,
+		classifyid)
+		values (#{articleid,jdbcType=INTEGER},
+		#{title,jdbcType=VARCHAR},
+		#{textarea,jdbcType=VARCHAR},
+		#{pubdate,jdbcType=TIMESTAMP}, #{lastedit,jdbcType=TIMESTAMP},
+		#{userid,jdbcType=INTEGER},
+		#{hot,jdbcType=INTEGER},
+		#{review,jdbcType=INTEGER},
+		#{articlestatus,jdbcType=INTEGER},
+		#{classifyid,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="troevil.model.Article">
+		insert into lighter_article
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="articleid != null">
+				articleid,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="textarea != null">
+				textarea,
+			</if>
+			<if test="pubdate != null">
+				pubdate,
+			</if>
+			<if test="lastedit != null">
+				lastedit,
+			</if>
+			<if test="userid != null">
+				userid,
+			</if>
+			<if test="hot != null">
+				hot,
+			</if>
+			<if test="review != null">
+				review,
+			</if>
+			<if test="articlestatus != null">
+				articlestatus,
+			</if>
+			<if test="classifyid != null">
+				classifyid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="articleid != null">
+				#{articleid,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="textarea != null">
+				#{textarea,jdbcType=VARCHAR},
+			</if>
+			<if test="pubdate != null">
+				#{pubdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastedit != null">
+				#{lastedit,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+			<if test="hot != null">
+				#{hot,jdbcType=INTEGER},
+			</if>
+			<if test="review != null">
+				#{review,jdbcType=INTEGER},
+			</if>
+			<if test="articlestatus != null">
+				#{articlestatus,jdbcType=INTEGER},
+			</if>
+			<if test="classifyid != null">
+				#{classifyid,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="troevil.model.Article">
+		update lighter_article
+		<set>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="textarea != null">
+				textarea = #{textarea,jdbcType=VARCHAR},
+			</if>
+			<if test="pubdate != null">
+				pubdate = #{pubdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastedit != null">
+				lastedit = #{lastedit,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userid != null">
+				userid = #{userid,jdbcType=INTEGER},
+			</if>
+			<if test="hot != null">
+				hot = #{hot,jdbcType=INTEGER},
+			</if>
+			<if test="review != null">
+				review = #{review,jdbcType=INTEGER},
+			</if>
+			<if test="articlestatus != null">
+				articlestatus = #{articlestatus,jdbcType=INTEGER},
+			</if>
+			<if test="classifyid != null">
+				classifyid = #{classifyid,jdbcType=INTEGER},
+			</if>
+		</set>
+		where articleid = #{articleid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="troevil.model.Article">
+		update
+		lighter_article
+		set title = #{title,jdbcType=VARCHAR},
+		textarea =
+		#{textarea,jdbcType=VARCHAR},
+		pubdate = #{pubdate,jdbcType=TIMESTAMP},
+		lastedit = #{lastedit,jdbcType=TIMESTAMP},
+		userid =
+		#{userid,jdbcType=INTEGER},
+		hot = #{hot,jdbcType=INTEGER},
+		review =
+		#{review,jdbcType=INTEGER},
+		articlestatus =
+		#{articlestatus,jdbcType=INTEGER},
+		classifyid =
+		#{classifyid,jdbcType=INTEGER}
+		where articleid =
+		#{articleid,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectmember" resultType="troevil.model.Members"
+		parameterType="java.lang.Integer">
+		select
+		lighter_members.userid, lighter_members.nick,
+		lighter_members.email, lighter_members.password,
+		lighter_members.phone, lighter_members.typeid,
+		lighter_members.limitid,
+		lighter_members.session,
+		lighter_members.lastip,
+		lighter_members.regdate,
+		lighter_members.hot,lighter_members.icon
+		from
+		lighter_members
+		where
+		lighter_members.userid = #{userid,jdbcType=INTEGER}
+	</select>
+	<select id="selectclassifystatus" resultType="troevil.model.ClassifyStatus"
+		parameterType="java.lang.Integer">
+		select
+		lighter_classify.classifyid,
+		lighter_classify.name, lighter_classify.preclassifyid
+		from
+		lighter_classify
+		where lighter_classify.classifyid =
+		#{classifyid,jdbcType=INTEGER}
+	</select>
+	<resultMap id="articleResultMap" type="troevil.model.Article"
+		extends="BaseResultMap">
+		<collection property="member" column="userid"
+			javaType="troevil.model.Members" select="selectmember" />
+		<collection property="classifystatus" column="classifyid"
+			javaType="troevil.model.ClassifyStatus" select="selectclassifystatus" />
+	</resultMap>
+
+	<select id="getAllArticle" resultMap="articleResultMap">
+		select
+		articleid,
+		classifyid,title,
+		textarea, pubdate, lastedit, userid, hot,
+		review,
+		x.articlestatus
+		from lighter_article x,lighter_artstatus y
+		where
+		x.articlestatus = y.articlestatus and
+		y.name =
+		#{statusname,jdbcType=VARCHAR}
+		order by lastedit desc
+		limit
+		#{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
+	</select>
+
+	<select id="getnumber" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		select
+		count(articleid)
+		from lighter_article
+		x,lighter_artstatus y
+		where x.articlestatus = y.articlestatus and
+		y.name = #{statusname,jdbcType=VARCHAR}
+	</select>
+</mapper>

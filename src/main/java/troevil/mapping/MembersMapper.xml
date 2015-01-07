@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="troevil.dao.MembersMapper">
+	<resultMap id="BaseResultMap" type="troevil.model.Members">
+		<id column="userid" property="userid" jdbcType="INTEGER" />
+		<result column="nick" property="nick" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="typeid" property="typeid" jdbcType="INTEGER" />
+		<result column="limitid" property="limitid" jdbcType="INTEGER" />
+		<result column="session" property="session" jdbcType="VARCHAR" />
+		<result column="lastip" property="lastip" jdbcType="VARCHAR" />
+		<result column="regdate" property="regdate" jdbcType="DATE" />
+		<result column="hot" property="hot" jdbcType="INTEGER" />
+		<result column="icon" property="icon" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		userid, nick, email, password, phone, typeid, limitid,
+		session, lastip,
+		regdate,
+		hot,icon
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from lighter_members
+		where userid = #{userid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		lighter_members
+		where userid = #{userid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="troevil.model.Members">
+		insert into lighter_members
+		(userid, nick, email,
+		password, phone, typeid,
+		limitid, session, lastip,
+		regdate, hot ,icon)
+		values (#{userid,jdbcType=INTEGER},
+		#{nick,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+		#{typeid,jdbcType=INTEGER},
+		#{limitid,jdbcType=INTEGER},
+		#{session,jdbcType=VARCHAR},
+		#{lastip,jdbcType=VARCHAR},
+		#{regdate,jdbcType=DATE}, #{hot,jdbcType=INTEGER},
+		#{icon,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="troevil.model.Members">
+		insert into lighter_members
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userid != null">
+				userid,
+			</if>
+			<if test="nick != null">
+				nick,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="typeid != null">
+				typeid,
+			</if>
+			<if test="limitid != null">
+				limitid,
+			</if>
+			<if test="session != null">
+				session,
+			</if>
+			<if test="lastip != null">
+				lastip,
+			</if>
+			<if test="regdate != null">
+				regdate,
+			</if>
+			<if test="hot != null">
+				hot,
+			</if>
+			<if test="icon != null">
+				icon,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+			<if test="nick != null">
+				#{nick,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="typeid != null">
+				#{typeid,jdbcType=INTEGER},
+			</if>
+			<if test="limitid != null">
+				#{limitid,jdbcType=INTEGER},
+			</if>
+			<if test="session != null">
+				#{session,jdbcType=VARCHAR},
+			</if>
+			<if test="lastip != null">
+				#{lastip,jdbcType=VARCHAR},
+			</if>
+			<if test="regdate != null">
+				#{regdate,jdbcType=DATE},
+			</if>
+			<if test="hot != null">
+				#{hot,jdbcType=INTEGER},
+			</if>
+			<if test="icon != null">
+				#{icon,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="troevil.model.Members">
+		update lighter_members
+		<set>
+			<if test="nick != null">
+				nick = #{nick,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="typeid != null">
+				typeid = #{typeid,jdbcType=INTEGER},
+			</if>
+			<if test="limitid != null">
+				limitid = #{limitid,jdbcType=INTEGER},
+			</if>
+			<if test="session != null">
+				session = #{session,jdbcType=VARCHAR},
+			</if>
+			<if test="lastip != null">
+				lastip = #{lastip,jdbcType=VARCHAR},
+			</if>
+			<if test="regdate != null">
+				regdate = #{regdate,jdbcType=DATE},
+			</if>
+			<if test="hot != null">
+				hot = #{hot,jdbcType=INTEGER},
+			</if>
+			<if test="icon != null">
+				icon = #{icon,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where userid = #{userid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="troevil.model.Members">
+		update
+		lighter_members
+		set nick = #{nick,jdbcType=VARCHAR},
+		email =
+		#{email,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		phone = #{phone,jdbcType=VARCHAR},
+		typeid = #{typeid,jdbcType=INTEGER},
+		limitid = #{limitid,jdbcType=INTEGER},
+		session =
+		#{session,jdbcType=VARCHAR},
+		lastip = #{lastip,jdbcType=VARCHAR},
+		regdate = #{regdate,jdbcType=DATE},
+		hot = #{hot,jdbcType=INTEGER},
+		icon
+		= #{icon,jdbcType=VARCHAR}
+		where
+		userid = #{userid,jdbcType=INTEGER}
+	</update>
+	<select id="verifySelective" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lighter_members
+		where password =#{password,jdbcType=VARCHAR}
+		<if test="type=='email'">
+			and email = #{username,jdbcType=VARCHAR}
+		</if>
+		<if test="type=='nick'">
+			and nick = #{username,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<select id="selectRepeat" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lighter_members
+		where 1=1
+		<if test="type=='email'">
+			and email = #{condition,jdbcType=VARCHAR}
+		</if>
+		<if test="type=='nick'">
+			and nick = #{condition,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<select id="selectarticlemem" resultMap="BaseResultMap">
+		select
+		x.userid, nick,
+		email, password, phone, typeid, limitid,session,
+		lastip,regdate,x.hot,icon
+		from lighter_members x,lighter_article
+		y,lighter_artstatus z
+		where
+		x.userid = y.userid
+		and z.name =
+		#{statusname,jdbcType=VARCHAR}
+		order by
+		y.lastedit desc
+		limit
+		#{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
+	</select>
+
+	<resultMap id="BaseLimit" type="troevil.model.Memlimit">
+		<id column="limitid" property="limitid" jdbcType="INTEGER" />
+		<result column="daily" property="daily" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+	</resultMap>
+	<resultMap id="BaseType" type="troevil.model.Memtype">
+		<id column="typeid" property="typeid" jdbcType="INTEGER" />
+		<result column="typename" property="typename" jdbcType="VARCHAR" />
+		<result column="daily" property="daily" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="allowreg" property="allowreg" jdbcType="INTEGER" />
+	</resultMap>
+
+	<select id="selectstatus" parameterType="java.lang.Integer"
+		resultType="troevil.model.Memstatus">
+		select
+		lighter_memstatus.statusid, lighter_memstatus.name,
+		lighter_memstatus.forbit
+		from lighter_memstatus
+		where
+		lighter_memstatus.statusid =
+		#{status,jdbcType=INTEGER}
+	</select>
+	<resultMap type="troevil.model.Memtype" id="TypePlus"
+		extends="BaseType">
+		<collection property="typestatus" column="status"
+			javaType="troevil.model.Memstatus" select="selectstatus" />
+	</resultMap>
+	<resultMap type="troevil.model.Memlimit" id="LimitPlus"
+		extends="BaseLimit">
+		<collection property="limitstatus" column="status"
+			javaType="troevil.model.Memstatus" select="selectstatus" />
+	</resultMap>
+	<select id="selecttype" resultMap="TypePlus" parameterType="java.lang.Integer">
+		select
+		lighter_memtype.typeid, lighter_memtype.typename,
+		lighter_memtype.daily, lighter_memtype.status,
+		lighter_memtype.allowreg
+		from lighter_memtype
+		where
+		lighter_memtype.typeid =
+		#{typeid,jdbcType=INTEGER}
+	</select>
+	<select id="selectlimit" resultMap="LimitPlus" parameterType="java.lang.Integer">
+		select
+		lighter_memlimit.limitid,
+		lighter_memlimit.daily,
+		lighter_memlimit.status
+		from lighter_memlimit
+		where
+		lighter_memlimit.limitid =
+		#{limitid,jdbcType=INTEGER}
+	</select>
+	<resultMap type="troevil.model.Members" id="BaseResultMapPlus"
+		extends="BaseResultMap">
+		<collection property="memlimit" column="limitid"
+			javaType="troevil.model.Memlimit" select="selectlimit" />
+		<collection property="memtype" column="typeid"
+			javaType="troevil.model.Memtype" select="selecttype" />
+	</resultMap>
+	<select id="selectByuserid" parameterType="java.lang.Integer"
+		resultMap="BaseResultMapPlus">
+		select
+		<include refid="Base_Column_List" />
+		from lighter_members
+		where userid = #{userid,jdbcType=INTEGER}
+	</select>
+</mapper>
