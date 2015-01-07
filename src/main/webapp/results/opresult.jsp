@@ -22,7 +22,7 @@
 				<button type="button" class="btn btn-primary btn-"
 					onclick="javascript:self.location=document.referrer;">返回上一页</button>
 				<button type="button" class="btn btn-primary"
-					onclick="javascript:top.location='/Lighter';">返回主页</button>
+					onclick="javascript:top.location='/';">返回主页</button>
 			</div>
 		</div>
 	</div>
