@@ -1,4 +1,4 @@
-package troevil.model;
+﻿package troevil.model;
 
 public class StringFinal {
 	public final static String Error_datebase = "数据库执行失败,请稍后再试!";
