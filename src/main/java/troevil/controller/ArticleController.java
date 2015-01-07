@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,88 +29,24 @@ import troevil.model.Settings;
 @RequestMapping("/articles")
 public class ArticleController extends CommonController {
 
+	@Inject
 	private MembersI memberService;
+	@Inject
 	private ArticlesI articleService;
+	@Inject
 	private ClassifyStatusI classifyService;
+	@Inject
 	private HttpServletRequest request;
+	@Inject
 	private SettingsI settingService;
+	@Inject
 	private MemlimitI memlimitService;
+	@Inject
 	private MemtypeI memtypeService;
+	@Inject
 	private PublicinfoI publicinfoService;
 
 	public Result result;
-
-	public PublicinfoI getPublicinfoService() {
-		return publicinfoService;
-	}
-
-	@Autowired
-	public void setPublicinfoService(PublicinfoI publicinfoService) {
-		this.publicinfoService = publicinfoService;
-	}
-
-	public MemlimitI getMemlimitService() {
-		return memlimitService;
-	}
-
-	@Autowired
-	public void setMemlimitService(MemlimitI memlimitService) {
-		this.memlimitService = memlimitService;
-	}
-
-	public MemtypeI getMemtypeService() {
-		return memtypeService;
-	}
-
-	@Autowired
-	public void setMemtypeService(MemtypeI memtypeService) {
-		this.memtypeService = memtypeService;
-	}
-
-	public SettingsI getSettingService() {
-		return settingService;
-	}
-
-	@Autowired
-	public void setSettingService(SettingsI settingService) {
-		this.settingService = settingService;
-	}
-
-	public MembersI getMemberService() {
-		return memberService;
-	}
-
-	@Autowired
-	public void setMemberService(MembersI memberService) {
-		this.memberService = memberService;
-	}
-
-	public ArticlesI getArticleService() {
-		return articleService;
-	}
-
-	@Autowired
-	public void setArticleService(ArticlesI articleService) {
-		this.articleService = articleService;
-	}
-
-	public ClassifyStatusI getClassifyService() {
-		return classifyService;
-	}
-
-	@Autowired
-	public void setClassifyService(ClassifyStatusI classifyService) {
-		this.classifyService = classifyService;
-	}
-
-	public HttpServletRequest getRequest() {
-		return request;
-	}
-
-	@Autowired
-	public void setRequest(HttpServletRequest request) {
-		this.request = request;
-	}
 
 	@RequestMapping("/{nowpage}/getrecent")
 	public String ajaxgetarticle(@PathVariable Integer nowpage) {

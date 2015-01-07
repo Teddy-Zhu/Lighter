@@ -2,6 +2,7 @@ package troevil.controller;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,76 +22,20 @@ import troevil.model.Settings;
 @Controller
 @RequestMapping("/")
 public class DefaultController extends CommonController {
+	@Inject
 	private ArticlesI articleService;
+	@Inject
 	private MembersI memberService;
+	@Inject
 	private ClassifyStatusI classifyService;
+	@Inject
 	private HttpServletRequest request;
+	@Inject
 	private SettingsI settingService;
+	@Inject
 	private PublicinfoI publicinfoService;
+	@Inject
 	private LinksI linksService;
-
-	public LinksI getLinksService() {
-		return linksService;
-	}
-
-	@Autowired
-	public void setLinksService(LinksI linksService) {
-		this.linksService = linksService;
-	}
-
-	public PublicinfoI getPublicinfoService() {
-		return publicinfoService;
-	}
-
-	@Autowired
-	public void setPublicinfoService(PublicinfoI publicinfoService) {
-		this.publicinfoService = publicinfoService;
-	}
-
-	public MembersI getMemberService() {
-		return memberService;
-	}
-
-	@Autowired
-	public void setMemberService(MembersI memberService) {
-		this.memberService = memberService;
-	}
-
-	public SettingsI getSettingService() {
-		return settingService;
-	}
-
-	@Autowired
-	public void setSettingService(SettingsI settingService) {
-		this.settingService = settingService;
-	}
-
-	public ClassifyStatusI getClassifyService() {
-		return classifyService;
-	}
-
-	@Autowired
-	public void setClassifyService(ClassifyStatusI classifyService) {
-		this.classifyService = classifyService;
-	}
-
-	public ArticlesI getArticleService() {
-		return articleService;
-	}
-
-	@Autowired
-	public void setArticleService(ArticlesI articleService) {
-		this.articleService = articleService;
-	}
-
-	public HttpServletRequest getRequest() {
-		return request;
-	}
-
-	@Autowired
-	public void setRequest(HttpServletRequest request) {
-		this.request = request;
-	}
 
 	@RequestMapping("index")
 	public String index() {
@@ -98,12 +43,10 @@ public class DefaultController extends CommonController {
 		Integer pagesize = pagesizeset.getValue();
 		List<Article> lists = articleService.getAllArticle(Articles_arpub, 0, pagesize);
 		List<Publicinfo> pubinfo = publicinfoService.getAllpublicinfo(0, 5);
-		request.getSession().setAttribute("totle",
-				articleService.getnumber(Articles_arpub));
+		request.getSession().setAttribute("totle", articleService.getnumber(Articles_arpub));
 		request.getSession().setAttribute("lists", lists);
 		request.getSession().setAttribute("publicinfo", pubinfo);
-		request.getSession().setAttribute("publicnum",
-				publicinfoService.getnumber());
+		request.getSession().setAttribute("publicnum", publicinfoService.getnumber());
 		request.getSession().setAttribute("links", linksService.getAlllinks(1));
 		request.getSession().setAttribute("linknum", linksService.getnumber(1));
 		return "models/index";

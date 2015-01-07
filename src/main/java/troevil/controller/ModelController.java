@@ -2,6 +2,7 @@ package troevil.controller;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,57 +20,17 @@ import troevil.model.Settings;
 
 @Controller
 @RequestMapping("/models")
-public class ModelController extends CommonController{
+public class ModelController extends CommonController {
+	@Inject
 	private ClassifyStatusI classifyService;
+	@Inject
 	private HttpServletRequest request;
+	@Inject
 	private MemtypeI memtypeService;
+	@Inject
 	private SettingsI settingsService;
+	@Inject
 	private MembersI memberService;
-
-	public MembersI getMemberService() {
-		return memberService;
-	}
-
-	@Autowired
-	public void setMemberService(MembersI memberService) {
-		this.memberService = memberService;
-	}
-
-	public ClassifyStatusI getClassifyService() {
-		return classifyService;
-	}
-
-	@Autowired
-	public void setClassifyService(ClassifyStatusI classifyService) {
-		this.classifyService = classifyService;
-	}
-
-	public MemtypeI getMemtypeService() {
-		return memtypeService;
-	}
-
-	public SettingsI getSettingsService() {
-		return settingsService;
-	}
-
-	@Autowired
-	public void setSettingsService(SettingsI settingsService) {
-		this.settingsService = settingsService;
-	}
-
-	@Autowired
-	public void setMemtypeService(MemtypeI memtypeService) {
-		this.memtypeService = memtypeService;
-	}
-
-	public HttpServletRequest getRequest() {
-		return request;
-	}
-
-	@Autowired
-	public void setRequest(HttpServletRequest request) {
-		this.request = request;
-	}
 
 	@RequestMapping("/register")
 	public String regmodel() {
@@ -92,8 +53,7 @@ public class ModelController extends CommonController{
 		Members mem = new Members();
 		request.getSession().setAttribute("allow", 0);
 		if (request.getSession().getAttribute("username") != null) {
-			mem = memberService.selectByuserid(Integer.parseInt(request
-					.getSession().getAttribute("username").toString()));
+			mem = memberService.selectByuserid(Integer.parseInt(request.getSession().getAttribute("username").toString()));
 			if (mem != null) {
 				if (mem.getLimitid() == null) {
 
@@ -112,12 +72,10 @@ public class ModelController extends CommonController{
 						request.getSession().setAttribute("allow", 0);
 						return "models/publishartmodel";
 					}
-					if (mem.getMemlimit().getLimitstatus().getName()
-							.equals(Name_check))
+					if (mem.getMemlimit().getLimitstatus().getName().equals(Name_check))
 						request.getSession().setAttribute("allow", 0);
 				}
-				List<ClassifyStatus> classify = classifyService
-						.getallclassify();
+				List<ClassifyStatus> classify = classifyService.getallclassify();
 				request.getSession().setAttribute("classify", classify);
 			} else
 				request.getSession().setAttribute("allow", 0);
@@ -131,16 +89,13 @@ public class ModelController extends CommonController{
 		Members mem = new Members();
 		request.getSession().setAttribute("allow", 0);
 		if (request.getSession().getAttribute("username") != null) {
-			mem = memberService.selectByuserid(Integer.parseInt(request
-					.getSession().getAttribute("username").toString()));
+			mem = memberService.selectByuserid(Integer.parseInt(request.getSession().getAttribute("username").toString()));
 			if (mem != null) {
 				if (mem.getLimitid() == null) {
-					if (mem.getMemtype().getTypestatus().getName()
-							.equals(Name_superaccess))
+					if (mem.getMemtype().getTypestatus().getName().equals(Name_superaccess))
 						request.getSession().setAttribute("allow", 1);
 				} else {
-					if (mem.getMemlimit().getLimitstatus().getName()
-							.equals(Name_superaccess))
+					if (mem.getMemlimit().getLimitstatus().getName().equals(Name_superaccess))
 						request.getSession().setAttribute("allow", 1);
 				}
 			}
@@ -153,16 +108,13 @@ public class ModelController extends CommonController{
 		Members mem = new Members();
 		request.getSession().setAttribute("allow", 0);
 		if (request.getSession().getAttribute("username") != null) {
-			mem = memberService.selectByuserid(Integer.parseInt(request
-					.getSession().getAttribute("username").toString()));
+			mem = memberService.selectByuserid(Integer.parseInt(request.getSession().getAttribute("username").toString()));
 			if (mem != null) {
 				if (mem.getLimitid() == null) {
-					if (mem.getMemtype().getTypestatus().getName()
-							.equals(Name_superaccess))
+					if (mem.getMemtype().getTypestatus().getName().equals(Name_superaccess))
 						request.getSession().setAttribute("allow", 1);
 				} else {
-					if (mem.getMemlimit().getLimitstatus().getName()
-							.equals(Name_superaccess))
+					if (mem.getMemlimit().getLimitstatus().getName().equals(Name_superaccess))
 						request.getSession().setAttribute("allow", 1);
 				}
 			}

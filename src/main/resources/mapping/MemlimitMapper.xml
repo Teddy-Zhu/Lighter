@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="troevil.dao.MemlimitMapper">
+	<resultMap id="BaseResultMap" type="troevil.model.Memlimit">
+		<id column="limitid" property="limitid" jdbcType="INTEGER" />
+		<result column="daily" property="daily" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		limitid, daily, status
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from lighter_memlimit
+		where limitid = #{limitid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		lighter_memlimit
+		where limitid = #{limitid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="troevil.model.Memlimit">
+		insert into lighter_memlimit
+		(limitid, daily, status
+		)
+		values (#{limitid,jdbcType=INTEGER},
+		#{daily,jdbcType=INTEGER},
+		#{status,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="troevil.model.Memlimit">
+		insert into lighter_memlimit
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="limitid != null">
+				limitid,
+			</if>
+			<if test="daily != null">
+				daily,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="limitid != null">
+				#{limitid,jdbcType=INTEGER},
+			</if>
+			<if test="daily != null">
+				#{daily,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="troevil.model.Memlimit">
+		update lighter_memlimit
+		<set>
+			<if test="daily != null">
+				daily = #{daily,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+		</set>
+		where limitid = #{limitid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="troevil.model.Memlimit">
+		update
+		lighter_memlimit
+		set daily = #{daily,jdbcType=INTEGER},
+		status =
+		#{status,jdbcType=INTEGER}
+		where limitid = #{limitid,jdbcType=INTEGER}
+	</update>
+	<insert id="insertlimitid" parameterType="troevil.model.Memlimit"
+		useGeneratedKeys="true" keyProperty="limitid">
+		insert into lighter_memlimit
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="daily != null">
+				daily,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="daily != null">
+				#{daily,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+</mapper>

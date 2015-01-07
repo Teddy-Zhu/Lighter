@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="troevil.dao.ArtstatusMapper">
+	<resultMap id="BaseResultMap" type="troevil.model.Artstatus">
+		<id column="articlestatus" property="articlestatus" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		articlestatus, name
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from lighter_artstatus
+		where articlestatus =
+		#{articlestatus,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		lighter_artstatus
+		where articlestatus =
+		#{articlestatus,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="troevil.model.Artstatus">
+		insert into lighter_artstatus
+		(articlestatus, name)
+		values (#{articlestatus,jdbcType=INTEGER},
+		#{name,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="troevil.model.Artstatus">
+		insert into lighter_artstatus
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="articlestatus != null">
+				articlestatus,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="articlestatus != null">
+				#{articlestatus,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="troevil.model.Artstatus">
+		update lighter_artstatus
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where articlestatus = #{articlestatus,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="troevil.model.Artstatus">
+		update
+		lighter_artstatus
+		set name = #{name,jdbcType=VARCHAR}
+		where
+		articlestatus = #{articlestatus,jdbcType=INTEGER}
+	</update>
+</mapper>

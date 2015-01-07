@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="troevil.dao.PublicinfoMapper">
+	<resultMap id="BaseResultMap" type="troevil.model.Publicinfo">
+		<id column="publicid" property="publicid" jdbcType="INTEGER" />
+		<result column="context" property="context" jdbcType="VARCHAR" />
+		<result column="pubtime" property="pubtime" jdbcType="TIMESTAMP" />
+		<result column="userid" property="userid" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		publicid, context, pubtime, userid
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from lighter_public
+		where publicid = #{publicid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		lighter_public
+		where publicid = #{publicid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="troevil.model.Publicinfo">
+		insert into lighter_public
+		(publicid, context, pubtime,
+		userid)
+		values
+		(#{publicid,jdbcType=INTEGER}, #{context,jdbcType=VARCHAR},
+		#{pubtime,jdbcType=TIMESTAMP},
+		#{userid,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="troevil.model.Publicinfo">
+		insert into lighter_public
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="publicid != null">
+				publicid,
+			</if>
+			<if test="context != null">
+				context,
+			</if>
+			<if test="pubtime != null">
+				pubtime,
+			</if>
+			<if test="userid != null">
+				userid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="publicid != null">
+				#{publicid,jdbcType=INTEGER},
+			</if>
+			<if test="context != null">
+				#{context,jdbcType=VARCHAR},
+			</if>
+			<if test="pubtime != null">
+				#{pubtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="troevil.model.Publicinfo">
+		update lighter_public
+		<set>
+			<if test="context != null">
+				context = #{context,jdbcType=VARCHAR},
+			</if>
+			<if test="pubtime != null">
+				pubtime = #{pubtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userid != null">
+				userid = #{userid,jdbcType=INTEGER},
+			</if>
+		</set>
+		where publicid = #{publicid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="troevil.model.Publicinfo">
+		update
+		lighter_public
+		set context = #{context,jdbcType=VARCHAR},
+		pubtime =
+		#{pubtime,jdbcType=TIMESTAMP},
+		userid = #{userid,jdbcType=INTEGER}
+		where publicid = #{publicid,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectuser" parameterType="java.lang.Integer"
+		resultType="troevil.model.Members">
+		SELECT
+		lighter_members.userid, lighter_members.nick,
+		lighter_members.email, lighter_members.password,
+		lighter_members.phone,
+		lighter_members.typeid, lighter_members.limitid,
+		lighter_members.session, lighter_members.lastip,
+		lighter_members.regdate,
+		lighter_members.hot,lighter_members.icon
+		FROM
+		lighter_members
+		where lighter_members.userid=#{userid,jdbcType=INTEGER}
+	</select>
+	<resultMap id="userResultMap" type="troevil.model.Publicinfo"
+		extends="BaseResultMap">
+		<collection property="member" column="userid"
+			javaType="troevil.model.Members" select="selectuser" />
+	</resultMap>
+
+	<select id="getAllpublic" resultMap="userResultMap">
+		select
+		publicid, context,
+		pubtime, userid
+		from
+		lighter_public
+		order
+		by
+		pubtime desc
+		limit
+		#{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+	</select>
+	<select id="getnumber" resultType="java.lang.Integer">
+		select count(*) from
+		lighter_public
+	</select>
+</mapper>
