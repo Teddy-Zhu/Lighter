@@ -1,30 +1,30 @@
-ï»¿package troevil.model;
+package troevil.model;
 
 public class StringFinal {
-	public final static String Error_datebase = "æ•°æ®åº“æ‰§è¡Œå¤±è´¥,è¯·ç¨åå†è¯•!";
-	public final static String Error_null = "%sä¸èƒ½ä¸ºç©º!";
-	public final static String Error_regx = "%sä¸åŒ¹é…";
-	public final static String Error_nologin = "è¯·å…ˆç™»é™†!";
-	public final static String Error_failed = "%så¤±è´¥!";
-	public final static String Error_none = "%sä¸å­˜åœ¨";
-	public final static String Error_cate = "é€‰æ‹©é”™è¯¯ï¼";
-	public final static String Error_error = "%sé”™è¯¯!";
-	public final static String Error_selectcate = "%såˆ†ç±»" + Error_cate;
-	public final static String Error_format = "%sæ ¼å¼";
-	public final static String Error_duplicatepass = "ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸åŒ!";
-	public final static String Error_nottrue = "%sä¸æ­£ç¡®";
-	public final static String Error_unknown = "æœªçŸ¥é”™è¯¯!";
+	public final static String Error_datebase = "Êı¾İ¿âÖ´ĞĞÊ§°Ü,ÇëÉÔºóÔÙÊÔ!";
+	public final static String Error_null = "%s²»ÄÜÎª¿Õ!";
+	public final static String Error_regx = "%s²»Æ¥Åä";
+	public final static String Error_nologin = "ÇëÏÈµÇÂ½!";
+	public final static String Error_failed = "%sÊ§°Ü!";
+	public final static String Error_none = "%s²»´æÔÚ";
+	public final static String Error_cate = "Ñ¡Ôñ´íÎó£¡";
+	public final static String Error_error = "%s´íÎó!";
+	public final static String Error_selectcate = "%s·ÖÀà" + Error_cate;
+	public final static String Error_format = "%s¸ñÊ½";
+	public final static String Error_duplicatepass = "Á½´ÎÊäÈëµÄÃÜÂë²»Í¬!";
+	public final static String Error_nottrue = "%s²»ÕıÈ·";
+	public final static String Error_unknown = "Î´Öª´íÎó!";
 
-	public final static String Success_operation = "%sæˆåŠŸ!";
+	public final static String Success_operation = "%s³É¹¦!";
 	public final static String Success_operation_pubart = "%s:"
 			+ Success_operation;
 	public final static String Success_welcome = "Welcome%s,%s";
 
-	public final static String Warning_noaccess = "æ‚¨æš‚æ—¶æ²¡æœ‰%sçš„æƒé™";
-	public final static String Warning_check = "è¯·æ£€æŸ¥æ˜¯å¦%s";
-	public final static String Warning_sorry = "å¯¹ä¸èµ·,%s";
+	public final static String Warning_noaccess = "ÄúÔİÊ±Ã»ÓĞ%sµÄÈ¨ÏŞ";
+	public final static String Warning_check = "Çë¼ì²éÊÇ·ñ%s";
+	public final static String Warning_sorry = "¶Ô²»Æğ,%s";
 
-	public final static String Name_level = "ç­‰çº§";
+	public final static String Name_level = "µÈ¼¶";
 	public final static String Level_info = "info";
 	public final static String Level_danger = "danger";
 	public final static String Lebel_default = "default";
@@ -32,43 +32,43 @@ public class StringFinal {
 	public final static String Lebel_success = "success";
 	public final static String Lebel_warning = "warning";
 
-	public final static String Name_nick = "æ˜µç§°";
-	public final static String Name_email = "é‚®ç®±";
-	public final static String Name_phone = "æ‰‹æœºå·";
-	public final static String Name_username = "ç”¨æˆ·å";
-	public final static String Name_password = "å¯†ç ";
-	public final static String Name_usertype = "ç”¨æˆ·ç±»å‹";
-	public final static String Name_sex = "æ€§åˆ«";
-	public final static String Name_and = "%sä¸%s";
-	public final static String Name_or = "%sæˆ–%s";
+	public final static String Name_nick = "êÇ³Æ";
+	public final static String Name_email = "ÓÊÏä";
+	public final static String Name_phone = "ÊÖ»úºÅ";
+	public final static String Name_username = "ÓÃ»§Ãû";
+	public final static String Name_password = "ÃÜÂë";
+	public final static String Name_usertype = "ÓÃ»§ÀàĞÍ";
+	public final static String Name_sex = "ĞÔ±ğ";
+	public final static String Name_and = "%sÓë%s";
+	public final static String Name_or = "%s»ò%s";
 	public final static String Name_cookies = "Cookies";
-	public final static String Name_thanksforregiter = "æ„Ÿè°¢æ³¨å†ŒLigher";
-	public final static String Name_forbit = "ç¦æ­¢";
+	public final static String Name_thanksforregiter = "¸ĞĞ»×¢²áLigher";
+	public final static String Name_forbit = "½ûÖ¹";
 	public final static String Name_sem = "%s:%s";
-	public final static String Name_yourinput = "æ‚¨è¾“å…¥çš„%s";
-	public final static String Name_input = "è¾“å…¥";
-	public final static String Name_response = "å¦‚æœé—®é¢˜ä¾æ—§å­˜åœ¨,è¯·è”ç³»ç®¡ç†Email";
-	public final static String Name_registerd = "æ³¨å†Œ";
-	public final static String Name_used = "ä½¿ç”¨";
-	public final static String Name_title = "%sæ ‡é¢˜";
-	public final static String Name_content = "%så†…å®¹";
-	public final static String Name_articles = "æ–‡ç« ";
-	public final static String Name_commits = "è¯„è®º";
-	public final static String Name_announcement = "å…¬å‘Š";
-	public final static String Name_check = "å®¡æ ¸";
-	public final static String Name_link = "é“¾æ¥";
-	public final static String Name_superaccess = "è¶…çº§æƒé™";
-	public final static String Name_returns = "ä½ å¯ä»¥é€‰æ‹© è¿”å›ä¸»é¡µæˆ–è€…è¿”å›ä¸Šä¸€é¡µ,ä»¥æ­¤ç»§ç»­ä½ çš„æ“ä½œ!";
+	public final static String Name_yourinput = "ÄúÊäÈëµÄ%s";
+	public final static String Name_input = "ÊäÈë";
+	public final static String Name_response = "Èç¹ûÎÊÌâÒÀ¾É´æÔÚ,ÇëÁªÏµ¹ÜÀíEmail";
+	public final static String Name_registerd = "×¢²á";
+	public final static String Name_used = "Ê¹ÓÃ";
+	public final static String Name_title = "%s±êÌâ";
+	public final static String Name_content = "%sÄÚÈİ";
+	public final static String Name_articles = "ÎÄÕÂ";
+	public final static String Name_commits = "ÆÀÂÛ";
+	public final static String Name_announcement = "¹«¸æ";
+	public final static String Name_check = "ÉóºË";
+	public final static String Name_link = "Á´½Ó";
+	public final static String Name_superaccess = "³¬¼¶È¨ÏŞ";
+	public final static String Name_returns = "Äã¿ÉÒÔÑ¡Ôñ ·µ»ØÖ÷Ò³»òÕß·µ»ØÉÏÒ»Ò³,ÒÔ´Ë¼ÌĞøÄãµÄ²Ù×÷!";
 
-	public final static String Operate_publish = "å‘è¡¨%s";
-	public final static String Operate_publish_2 = "å‘å¸ƒ%s";
-	public final static String Operate_add = "æ·»åŠ %s";
-	public final static String Operate_already = "å·²ç»è¢«%s";
+	public final static String Operate_publish = "·¢±í%s";
+	public final static String Operate_publish_2 = "·¢²¼%s";
+	public final static String Operate_add = "Ìí¼Ó%s";
+	public final static String Operate_already = "ÒÑ¾­±»%s";
 
-	public final static String Articles_arpub = "å·²å‘å¸ƒ";
+	public final static String Articles_arpub = "ÒÑ·¢²¼";
 
-	public final static String Login_usertype = "ç”¨æˆ·ç±»å‹";
-	public final static String Need = "éœ€è¦";
-	public final static String Need_check = "%så®¡æ ¸";
+	public final static String Login_usertype = "ÓÃ»§ÀàĞÍ";
+	public final static String Need = "ĞèÒª";
+	public final static String Need_check = "%sÉóºË";
 
 }
