@@ -35,7 +35,7 @@ function showrestatus(type) {
 		$.ajax({
 			cache : true,
 			type : "POST",
-			url : "/Lighter/members/" + field + "/" + type.toString()
+			url : "members/" + field + "/" + type.toString()
 					+ "/verifyrepat.do",
 			data : $('#register').serialize(),
 			dataType : "text",
@@ -134,7 +134,7 @@ function sendmodelAjaxRequest(model) {
 	$.ajax({
 		cache : true,
 		type : "GET",
-		url : "/Lighter/models/" + model + ".do",
+		url : "models/" + model + ".do",
 		dataType : "text",
 		async : false,
 		error : function(request) {
@@ -248,7 +248,7 @@ function sendpostAjaxRequest(page) {
 			.ajax({
 				cache : true,
 				type : "GET",
-				url : "/Lighter/articles/" + page + "/getrecent.do",
+				url : "articles/" + page + "/getrecent.do",
 				dataType : "text",
 				async : false,
 				error : function(request) {
