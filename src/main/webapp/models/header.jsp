@@ -5,7 +5,6 @@
 %>
 <html>
 <head>
-<base href="http://localhost:8080/Lighter/" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>My blog Design by Troevil Powered by bootstrap</title>
