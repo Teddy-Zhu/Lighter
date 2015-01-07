@@ -43,7 +43,7 @@ public class DefaultController extends CommonController {
 		Integer pagesize = pagesizeset.getValue();
 		List<Article> lists = articleService.getAllArticle(Articles_arpub, 0, pagesize);
 		List<Publicinfo> pubinfo = publicinfoService.getAllpublicinfo(0, 5);
-		request.getSession().setAttribute("totle", articleService.getnumber("已发布"));
+		request.getSession().setAttribute("totle", articleService.getnumber(Articles_arpub));
 		request.getSession().setAttribute("lists", lists);
 		request.getSession().setAttribute("publicinfo", pubinfo);
 		request.getSession().setAttribute("publicnum", publicinfoService.getnumber());
